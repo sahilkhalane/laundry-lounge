@@ -1,0 +1,26 @@
+import { test, expect } from '@playwright/test';
+test('production app installs its assets and creates persistent orders without a network',async({page,context})=>{
+ const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+ await page.goto('/');
+ await page.evaluate(async()=>{await navigator.serviceWorker.ready;if(!navigator.serviceWorker.controller)await new Promise(resolve=>navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));});
+ const manifest=await page.evaluate(async()=>await(await fetch('/manifest.webmanifest')).json());
+ expect(manifest.display).toBe('standalone');
+ for(const icon of manifest.icons) expect((await page.request.get(icon.src)).ok()).toBe(true);
+ await context.setOffline(true);
+ await page.reload();
+ await expect(page.getByRole('heading',{name:/A fresh start/})).toBeVisible();
+ await page.getByRole('button',{name:'New order',exact:true}).click();
+ const dialog=page.getByRole('dialog',{name:'Create an order'});
+ await dialog.getByRole('button',{name:'Continue'}).click();
+ await dialog.getByLabel('Item 1 quantity').fill('3');
+ await dialog.getByRole('button',{name:'Continue'}).click();
+ await dialog.getByRole('button',{name:'Create order & bill'}).click();
+ await expect(page.getByRole('dialog').getByRole('heading',{name:/LL-1049/})).toBeVisible();
+ await page.reload();
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('laundry-lounge-v1')!).orders.some((order:{id:string})=>order.id==='LL-1049'))).toBe(true);
+ await page.getByRole('button',{name:'View order LL-1049',exact:true}).click();
+ await page.getByRole('button',{name:'Print tags',exact:true}).click();
+ await expect(page.getByRole('dialog',{name:'Garment tags'}).locator('.garment-tag')).toHaveCount(3);
+ await expect(page.getByRole('dialog').getByRole('button',{name:'Print tags',exact:true})).toBeEnabled();
+ expect(errors).toEqual([]);
+});

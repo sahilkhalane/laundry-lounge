@@ -1,0 +1,39 @@
+{
+  "name": "laundry-lounge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --import tsx tests/domain.test.ts",
+    "test:e2e": "playwright test",
+    "test:offline": "npm run build && playwright test --config playwright.offline.config.ts",
+    "package:deploy": "npm run build && node scripts/package-deployment.mjs",
+    "start": "node scripts/serve.mjs",
+    "test:server": "node --test tests/server.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "lucide-react": "^0.468.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tsx": "^4.19.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
