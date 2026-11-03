@@ -1,8 +1,8 @@
 # Laundry Lounge
 
-A custom application for Laundry Lounge. The **Android mobile app is in [`mobile/`](mobile/README.md)**. It uses native React Native screens, Android camera scanning, SQLite storage, and Android printing/sharing. Build and install its standalone APK using the mobile instructions.
+A custom application for Laundry Lounge. The **installable Android app is in [`android-native/`](android-native/README.md)**. It uses native Android screens, offline SQLite records, camera QR scanning, and Android PDF printing/sharing. It does not require website hosting or a development server on the phone.
 
-The repository also retains the earlier web workspace for optional browser-based use. Deploying that workspace to Railway or Netlify does not create or install the Android app. The two versions currently keep separate device-local records.
+The [`mobile/`](mobile/README.md) folder retains the earlier React Native implementation for reference. The working APK is built from `android-native/`, whose dependencies are available in this environment. The repository also retains the earlier web workspace for optional browser use. Records stay separately on each device; validated backups can be transferred manually.
 
 ## Optional web workspace
 

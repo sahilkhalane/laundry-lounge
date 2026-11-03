@@ -1,4 +1,6 @@
-# Android build status
+# React Native prototype build status
+
+The shipped Android SDK project is [`../android-native/`](../android-native/README.md). The block below applies only to this React Native project.
 
 The application in this directory uses native React Native controls and Android modules. It is not the web app packaged in a browser shell.
 

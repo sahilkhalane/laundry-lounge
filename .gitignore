@@ -10,3 +10,10 @@ mobile/build/
 mobile/*.jks
 mobile/*.keystore
 mobile/credentials.json
+android-native/.gradle/
+android-native/build/
+android-native/app/build/
+android-native/local.properties
+*.apk
+*.jks
+*.keystore

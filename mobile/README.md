@@ -1,4 +1,6 @@
-# Laundry Lounge — Android app
+# Laundry Lounge — React Native prototype
+
+**The installable app is now built from [`../android-native/`](../android-native/README.md).** This folder retains the React Native implementation. Its environment-specific dependency block below does not affect the Android SDK implementation or the APK.
 
 This directory contains the Android application built with React Native and Expo. Screens use native Android controls, records use native SQLite, QR scanning uses the phone camera, and bills/tags use Android printing and file sharing. A generated standalone APK includes the app and does not need a browser, Railway, Expo Go, or a development server to run.
 
