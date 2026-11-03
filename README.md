@@ -1,8 +1,10 @@
 # Laundry Lounge
 
-A custom, single-business laundry workspace. Built as a responsive, installable progressive web application (PWA) for Android/iPhone, with a wider workspace for computer-based billing and printing.
+A custom application for Laundry Lounge. The **Android mobile app is in [`mobile/`](mobile/README.md)**. It uses native React Native screens, Android camera scanning, SQLite storage, and Android printing/sharing. Build and install its standalone APK using the mobile instructions.
 
-## Run
+The repository also retains the earlier web workspace for optional browser-based use. Deploying that workspace to Railway or Netlify does not create or install the Android app. The two versions currently keep separate device-local records.
+
+## Optional web workspace
 
 Requires Node.js 22+ and npm. This environment was verified with Node 24.
 

@@ -4,3 +4,9 @@ playwright-report/
 test-results/
 *.local
 *.tsbuildinfo
+mobile/.expo/
+mobile/android/
+mobile/build/
+mobile/*.jks
+mobile/*.keystore
+mobile/credentials.json
